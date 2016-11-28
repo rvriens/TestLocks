@@ -12,8 +12,8 @@ namespace TestLocks
         {
             Console.WriteLine("Testing Semaphore");
 
-            new SemaphoreLocking(50).Execute();
-
+            //new SemaphoreLocking(50).Execute();
+            new ReadWriteLocking(10).Execute();
 
             Console.WriteLine("Press <ENTER> to exit...");
             Console.ReadLine();
