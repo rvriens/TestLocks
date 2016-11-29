@@ -12,9 +12,11 @@ namespace TestLocks
         private ReaderWriterLock _readerWriterLock = null;
         private List<Task> _tasks = null;
         private int _counter = 0;
+        private int _numTasks = 0;
 
         public ReadWriteLocking(int max = 10)
         {
+            _numTasks = max;
             _readerWriterLock = new ReaderWriterLock();
             _tasks = new List<Task>();
         }
@@ -23,7 +25,7 @@ namespace TestLocks
         public void Execute()
         {
             Console.WriteLine("Execute");
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < _numTasks; i++)
             {
                 _tasks.Add(ExecuteTask(i));
             }
@@ -70,14 +72,14 @@ namespace TestLocks
         {
             try
             {
-                _readerWriterLock.AcquireReaderLock(40);
+                _readerWriterLock.AcquireReaderLock(100);
                 try
                 {
                     try
                     {
                         int ms = new Random().Next(0, 3);
                         int c = 0;
-                        LockCookie lc = _readerWriterLock.UpgradeToWriterLock(60);
+                        LockCookie lc = _readerWriterLock.UpgradeToWriterLock(100);
                         try
                         {
                             c = _counter;
@@ -139,7 +141,7 @@ namespace TestLocks
 
             try
             {
-                _readerWriterLock.AcquireReaderLock(30);
+                _readerWriterLock.AcquireReaderLock(300);
                 try
                 {
                     int resourceValue = _counter;

@@ -43,10 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BarrierLocking.cs" />
+    <Compile Include="ThreadLocalLocking.cs" />
+    <Compile Include="LazyInitializerLocking.cs" />
+    <Compile Include="ManualResetEventLocking.cs" />
+    <Compile Include="LockLocking.cs" />
+    <Compile Include="InterLocking.cs" />
+    <Compile Include="MutexLocking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadWriteLocking.cs" />
     <Compile Include="SemaphoreLocking.cs" />
+    <Compile Include="SpinLocking.cs" />
+    <Compile Include="MonitorLocking.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
